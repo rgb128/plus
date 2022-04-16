@@ -1,13 +1,13 @@
 'use strict';
 
 const CONFIG = {
-    minShift: 5,
-    maxShift: 50,
+    minShift: -Math.min(document.documentElement.clientWidth, document.documentElement.clientHeight) / 4,
+    maxShift: Math.min(document.documentElement.clientWidth, document.documentElement.clientHeight) / 4,
     canvasWidth: document.documentElement.clientWidth,
     canvasHeight: document.documentElement.clientHeight,
     clickPaddings: 2,
     shiftEqual: false,
-    animationDuration: 500,
+    animationDuration: 300,
     colors: ['red', 'green', 'blue', 'magenta', 'gray', 'aqua', 'sienna'],
     save: {
         text: '#808080 plus',
@@ -29,6 +29,8 @@ window.onresize = (e) => {
     const oldHeight = CONFIG.canvasHeight;
     CONFIG.canvasWidth = document.documentElement.clientWidth;
     CONFIG.canvasHeight = document.documentElement.clientHeight;
+    CONFIG.minShift = -Math.min(document.documentElement.clientWidth, document.documentElement.clientHeight) / 4;
+    CONFIG.maxShift = Math.min(document.documentElement.clientWidth, document.documentElement.clientHeight) / 4;
     canvasElement.width = CONFIG.canvasWidth;
     canvasElement.height = CONFIG.canvasHeight;
     ctx.putImageData(imageData, CONFIG.canvasWidth - oldWidth, CONFIG.canvasHeight - oldHeight);
@@ -36,4 +38,3 @@ window.onresize = (e) => {
 
 canvasElement.width = CONFIG.canvasWidth;
 canvasElement.height = CONFIG.canvasHeight;
-
