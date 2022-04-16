@@ -8,7 +8,7 @@ const CONFIG = {
     clickPaddings: 2,
     shiftEqual: false,
     animationDuration: 500,
-    colors: ['black', 'red', 'white', 'green', 'blue', 'magenta', 'gray'],
+    colors: ['red', 'green', 'blue', 'magenta', 'gray', 'aqua', 'sienna'],
     save: {
         text: '#808080 plus',
         fileName: 'plus.png',
