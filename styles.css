@@ -9,5 +9,11 @@ canvas {
     width: 100%;
     height: 100vh;
     display: block;
-    background: red;
+    background: white;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+    canvas {
+        background: black;
+    }
 }

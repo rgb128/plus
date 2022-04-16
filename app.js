@@ -14,9 +14,10 @@ const CONFIG = {
         fileName: 'plus.png',
         bottom: 15,
         right: 10,
-        font: '30px Arial',
+        font: 'bold 30px Arial',
         strokeWidth: 4,
     },
+    darkMode: !!(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches),
 };
 
 const canvasElement = document.getElementById('canvas');
@@ -53,21 +54,6 @@ canvasElement.onclick = async (e) => {
     await makePlus(ctx, color, realX, realY);
 }
 
-
-// async function btnClick(e) {
-//     function getColor() {
-//         colorI++;
-//         if (colorI >= CONFIG.colors.length) {
-//             colorI = 0;
-//         }
-//         return CONFIG.colors[colorI];
-//     }
-
-//     const x = map(Math.random(), 0, 1, 2, 198);
-//     const y = map(Math.random(), 0, 1, 2, 198);
-
-//     await makePlus(ctx, getColor(), x, y);
-// }
 
 function makePlus(ctx, color, x = 100, y = 100, width = CONFIG.canvasWidth, height = CONFIG.canvasHeight) {
     return new Promise((resolve, reject) => {
@@ -176,9 +162,9 @@ function map(num, frombottom, fromtop, tobottom, totop) {
 function drawText(context) {
     context.font = CONFIG.save.font;
     context.textAlign = 'end';
-    context.fillStyle = 'white';
-    context.strokeStyle = 'black';
-    context.lineWidth = CONFIG.save.strokeWidth * 2;
+    context.fillStyle = CONFIG.darkMode ? 'black' : 'white';
+    context.strokeStyle = CONFIG.darkMode ? 'white' : 'black';
+    context.lineWidth = CONFIG.save.strokeWidth;
     // context.stroke = 'red';
     context.strokeText(CONFIG.save.text, CONFIG.canvasWidth - CONFIG.save.right, CONFIG.canvasHeight - CONFIG.save.bottom);
     context.fillText(CONFIG.save.text, CONFIG.canvasWidth - CONFIG.save.right, CONFIG.canvasHeight - CONFIG.save.bottom);
