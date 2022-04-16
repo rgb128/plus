@@ -14,14 +14,14 @@ ctx.beginPath();
 ctx.arc(95, 50, 40, 0, 2 * Math.PI);
 ctx.stroke();
 
-ctx.font = "30px Arial";
-ctx.fillText("Hello Worl5", 10, 0);
-ctx.fillText("Hello Worl6", 10, 30);
-ctx.fillText("Hello Worl7", 10, 60);
-ctx.fillText("Hello World", 10, 100);
-ctx.fillText("Hello Worl2", 10, 130);
-ctx.fillText("Hello Worl3", 10, 160);
-ctx.fillText("Hello Worl4", 10, 190);
+ctx.font = '30px Arial';
+ctx.fillText('Hello Worl5', 10, 0);
+ctx.fillText('Hello Worl6', 10, 30);
+ctx.fillText('Hello Worl7', 10, 60);
+ctx.fillText('Hello World', 10, 100);
+ctx.fillText('Hello Worl2', 10, 130);
+ctx.fillText('Hello Worl3', 10, 160);
+ctx.fillText('Hello Worl4', 10, 190);
 
 let colorI = 0;
 async function btnClick(e) {
@@ -142,4 +142,27 @@ function map(num, frombottom, fromtop, tobottom, totop) {
     a *= (totop-tobottom)/(fromtop-frombottom);
     a += tobottom;
     return a;
+}
+
+function save() {
+    const canvas = document.getElementById('canvas');
+    const newCanvas = canvas.cloneNode(true);
+    // newCanvas.style.display = 'none';
+
+    const newCtx = newCanvas.getContext('2d');
+    newCtx.putImageData(ctx.getImageData(0, 0, 200, 200), 0, 0);
+    newCtx.font = '30px Arial';
+    newCtx.textAlign = 'end';
+    newCtx.fillText('#808080 plus', 190, 190);
+
+    const myImageDataUrl = newCanvas.toDataURL('image/png').replace('image/png', 'image/octet-stream');
+    const link = document.createElement('a');
+    link.style.display = 'none';
+    link.href = myImageDataUrl;
+    link.download = 'img.png';
+
+    link.click();
+
+    link.remove();
+    newCanvas.remove();
 }
