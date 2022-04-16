@@ -1,9 +1,14 @@
 'use strict';
 
-// const ctx = document.getElementById('canvas').getContext('2d');
-const canvas = document.getElementById('canvas');
-const ctx = canvas.getContext('2d');
-const ctx2 = document.getElementById('canvas2').getContext('2d');
+const CONFIG = {
+    minShift: 5,
+    maxShift: 50,
+    shiftEqual: false,
+    animationDuration: 500,
+    colors: ['black', 'red', 'white', 'green', 'blue', 'magenta', 'gray'],
+};
+
+const ctx = document.getElementById('canvas').getContext('2d');
 
 ctx.beginPath();
 ctx.arc(95, 50, 40, 0, 2 * Math.PI);
@@ -18,60 +23,27 @@ ctx.fillText("Hello Worl2", 10, 130);
 ctx.fillText("Hello Worl3", 10, 160);
 ctx.fillText("Hello Worl4", 10, 190);
 
-function drawRotated(canvasCtx, image, degrees){
-    // canvasCtx.clearRect(0, 0, 200, 200);
-    canvasCtx.save();
-    // canvasCtx.translate(canvasCtx.width / 2, canvasCtx.height / 2);
-    canvasCtx.rotate(degrees * Math.PI / 180);
-    // canvasCtx.drawImage(image, -image.width / 2, -image.width / 2);
-    // canvasCtx.drawImage(image, image.width, image.width);
-    canvasCtx.drawImage(image, 0, 0, 50, 50, 0, 0, 50, 50);
-    canvasCtx.restore();
-}
-
-function func2(color = '#ff0000'){
-    const imageData = ctx.getImageData(0, 0, 200, 200);
-    ctx.clearRect(0, 0, 200, 200);
-    ctx.fillStyle = color;
-    ctx.fillRect(0, 0, 200, 200);
-    ctx.putImageData(imageData, 20, 0);
-
-    // canvasCtx.restore();
-}
-
-function dr2(deg) {
-    drawRotated(ctx2, canvas, deg);
-}
-
-function btnClick(e) {
-    dr3();
-    // func2('#0000ff');
-    // func2('#00ff00');
-    // func2('#ffffff');
-    // func2('#ff0000');
-}
-
-async function dr3(x = 100, y = 100) {
-    const colors = [];
-    let colorI = 0;
+let colorI = 0;
+async function btnClick(e) {
     function getColor() {
         colorI++;
-        if (colorI >= colors.length) {
+        if (colorI >= CONFIG.colors.length) {
             colorI = 0;
         }
-        return colors[colorI];
+        return CONFIG.colors[colorI];
     }
-    console.log('start');
+
+    const x = map(Math.random(), 0, 1, 2, 198);
+    const y = map(Math.random(), 0, 1, 2, 198);
+
     await makePlus(ctx, getColor(), x, y);
-    console.log('end');
 }
 
 function makePlus(ctx, color, x = 100, y = 100, width = 200, height = 200) {
     return new Promise((resolve, reject) => {
-        const ANIMATION_DURATION = 2000;
+        const ANIMATION_DURATION = CONFIG.animationDuration;
         
-        const shifts = makeShifts(true);
-        console.log(shifts);
+        const shifts = makeShifts(CONFIG.shiftEqual);
 
         const topLeftImgData = ctx.getImageData(0, 0, x, y);
         const topRightImgData = ctx.getImageData(x, 0, width - x, y);
@@ -113,8 +85,8 @@ function makePlus(ctx, color, x = 100, y = 100, width = 200, height = 200) {
 }
 
 function makeShifts(equal = false) {
-    const min = 5;
-    const max = 5;
+    const min = CONFIG.minShift;
+    const max = CONFIG.maxShift;
     function getRandom() {
         return map(Math.random(), 0, 1, min, max);
     }
