@@ -23,7 +23,7 @@ div#text {
     color: black;
     width: 100%;
 }
-@media screen and (prefers-color-scheme: dark) {
+/* @media screen and (prefers-color-scheme: dark) {
     div {
         background-color: black;
         color: white;
@@ -31,11 +31,11 @@ div#text {
     .buttons{
         filter: invert(1);
     }
-}
+} */
 
 
 
-.buttons{
+/* .buttons{
     position: absolute;
     width: 75px;
     height: 75px;
@@ -43,21 +43,26 @@ div#text {
     bottom: 30px;
     left: 30px;
     transition: .3s;
-}
+} */
 button{
     text-align: center;
     font-size: 1.5rem;
-    background-color: black;
+    background-color: white;
     color: black;
     width: 50px;
     height: 50px;
     line-height: 50px;
     border: 0px;
 }
-button img{
+button:active,
+button:hover,
+button:focus {
+    background-color: rgb(208, 207, 207);
+}
+/* button img{
     margin: 25px;
     transform: translate(-50%, -50%);
-}
+} */
 
 #history {
     background-color: white;
@@ -150,7 +155,7 @@ button img{
         background-color: rgb(45, 45, 45);
     }
 }
-.buttons:hover #forward{
+/* .buttons:hover #forward{
     left: 65px;
     bottom: 65px;
-}
+} */
