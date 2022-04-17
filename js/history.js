@@ -11,6 +11,7 @@ const imagesHistory = {
         this.current++;
         const newHash = 'plus' + this.current;
         this.imageDatas[newHash] = new HistoryItem(newHash, imgData, parent);
+        this.imageDatas[newHash].root.contentDiv.classList.add('active');
         window.location.hash = newHash;
     }
 };
@@ -20,11 +21,9 @@ window.onhashchange = function() {
         imagesHistory.imageDatas[key].root.contentDiv.classList.remove('active');
     }
     const hash = window.location.hash.substring(1);
-    console.log(hash);
     const imgData = imagesHistory.imageDatas[hash];
     imgData.root.contentDiv.classList.add('active');
     if (!imgData) return;
-    console.log(imgData);
     ctx.putImageData(imgData.imageData, CONFIG.canvasWidth - imgData.imageData.width, CONFIG.canvasHeight - imgData.imageData.height); // this shoudn't be execute every time
 }
 
@@ -32,7 +31,6 @@ class HistoryItem {
     /** @type {string} */ key;
     /** @type {ImageData} */ imageData;
     /** @type {HistoryItem?} */ parent;
-    // /** @type {HistoryItem[]} */ children; // .filter(parent === key);
     /** @type {HTMLElement} */ root;
     /** @type {boolean} */ opened = true;
 
@@ -56,21 +54,34 @@ class HistoryItem {
         mainDiv.childrenDiv = childrenDiv;
         this.root = mainDiv;
         
-        console.log(this.imageData);
         const img = getImage(this.imageData, this.key);
         img.onclick = () => {
             window.location.hash = this.key;
         }
         const downloadBtn = document.createElement('button');
-        downloadBtn.innerText = 'download';
+        downloadBtn.innerText = 'save';
         downloadBtn.onclick = () => {
-            console.log(this.imageData);
             downloadImgData(this.imageData);
         };
         const copyBtn = document.createElement('button');
         copyBtn.innerText = 'copy';
-        copyBtn.onclick = () => {
-            console.log('copy', this.imageData);
+        copyBtn.onclick = async () => {
+            copyBtn.innerText = 'copying';
+            const blob = await imageDataToBlob(this.imageData);
+            try {
+                await navigator.clipboard.write([
+                    new ClipboardItem({
+                        'image/png': blob
+                    })
+                ]);
+                copyBtn.innerText = 'copied';
+            } catch (ex) {
+                console.error(ex);
+                copyBtn.innerText = 'failed';
+            }
+            setTimeout(() => {
+                copyBtn.innerText = 'copy';
+            }, 2000);
         };
         contentDiv.appendChild(img);
         contentDiv.appendChild(downloadBtn);

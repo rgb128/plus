@@ -44,7 +44,8 @@ button:focus {
     background-color: white;
     color: black;
     overflow: auto;
-    height: 200px;
+    min-height: 200px;
+    max-height: 50vh;
     padding: 5px;
     display: flex;
 }
@@ -53,7 +54,7 @@ button:focus {
     flex-direction: row;
     height: fit-content;
     min-height: 100%;
-    margin: 0px auto;
+    margin: auto;
 }
 #history > div .item {
     display: flex;
@@ -79,7 +80,7 @@ button:focus {
 }
 #history > div .item > .content > button {
     width: 50%;
-    font-size: .4rem;
+    font-size: .7rem;
 }
 #history > div .item > .children {
     display: flex;

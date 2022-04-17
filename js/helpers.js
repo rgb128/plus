@@ -122,3 +122,17 @@ function getImage(imgData, key) {
     newCanvas.remove();
     return img;
 }
+
+async function imageDataToBlob(imageData){
+    const w = imageData.width;
+    const h = imageData.height;
+    let canvas = document.createElement("canvas");
+    canvas.width = w;
+    canvas.height = h;
+    const ctx = canvas.getContext("2d");
+    ctx.putImageData(imageData, 0, 0);        // synchronous
+  
+    return new Promise((resolve) => {
+          canvas.toBlob(resolve); // implied image/png format
+    });
+  }

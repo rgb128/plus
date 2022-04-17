@@ -65,22 +65,22 @@ function makePlus(ctx, color, x = CONFIG.canvasWidth / 2, y = CONFIG.canvasHeigh
     });
 }
 
-function save() {
-    const newCanvas = canvasElement.cloneNode(true);
-    newCanvas.style.display = 'none';
+// function save() {
+//     const newCanvas = canvasElement.cloneNode(true);
+//     newCanvas.style.display = 'none';
 
-    const newCtx = newCanvas.getContext('2d');
-    newCtx.putImageData(ctx.getImageData(0, 0, CONFIG.canvasWidth, CONFIG.canvasHeight), 0, 0);
-    drawText(newCtx);
+//     const newCtx = newCanvas.getContext('2d');
+//     newCtx.putImageData(ctx.getImageData(0, 0, CONFIG.canvasWidth, CONFIG.canvasHeight), 0, 0);
+//     drawText(newCtx);
 
-    const myImageDataUrl = newCanvas.toDataURL('image/png').replace('image/png', 'image/octet-stream');
-    const link = document.createElement('a');
-    link.style.display = 'none';
-    link.href = myImageDataUrl;
-    link.download = CONFIG.save.fileName;
+//     const myImageDataUrl = newCanvas.toDataURL('image/png').replace('image/png', 'image/octet-stream');
+//     const link = document.createElement('a');
+//     link.style.display = 'none';
+//     link.href = myImageDataUrl;
+//     link.download = CONFIG.save.fileName;
 
-    link.click();
+//     link.click();
 
-    link.remove();
-    newCanvas.remove();
-}
+//     link.remove();
+//     newCanvas.remove();
+// }
