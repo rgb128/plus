@@ -41,7 +41,8 @@ button:focus {
 }
 
 #history {
-    color: white;
+    background-color: white;
+    color: black;
     overflow: auto;
     height: 200px;
 }
@@ -66,11 +67,15 @@ button:focus {
 }
 
 @media screen and (prefers-color-scheme: dark) {
-    div {
+    div#text {
         background-color: black;
         color: white;
     }
     button {
+        background-color: black;
+        color: white;
+    }
+    #history {
         background-color: black;
         color: white;
     }
