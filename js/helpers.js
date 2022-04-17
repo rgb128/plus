@@ -131,6 +131,7 @@ async function imageDataToBlob(imageData){
     canvas.height = h;
     const ctx = canvas.getContext("2d");
     ctx.putImageData(imageData, 0, 0);
+    drawText(ctx);
   
     return new Promise((resolve) => {
         canvas.toBlob(resolve); // implied image/png format
