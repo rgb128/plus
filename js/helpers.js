@@ -78,3 +78,61 @@ function fillBasic() {
     }
     ctx.fillRect(0, 0, CONFIG.canvasWidth, CONFIG.canvasHeight);
 }
+
+function downloadImgData(imgData) {
+    const newCanvas = document.createElement('canvas');
+    newCanvas.style.display = 'none';
+    newCanvas.style.width = imgData.width + 'px';
+    newCanvas.style.height = imgData.height + 'px';
+    newCanvas.width = imgData.width;
+    newCanvas.height = imgData.height;
+
+    const newCtx = newCanvas.getContext('2d');
+    newCtx.putImageData(imgData, 0, 0);
+    drawText(newCtx);
+
+    const myImageDataUrl = newCanvas.toDataURL('image/png').replace('image/png', 'image/octet-stream');
+    const link = document.createElement('a');
+    link.style.display = 'none';
+    link.href = myImageDataUrl;
+    link.download = CONFIG.save.fileName;
+
+    link.click();
+
+    link.remove();
+    newCanvas.remove();
+}
+
+function getImage(imgData, key) {
+    const newCanvas = document.createElement('canvas');
+    newCanvas.style.display = 'none';
+    newCanvas.style.width = imgData.width + 'px';
+    newCanvas.style.height = imgData.height + 'px';
+    newCanvas.width = imgData.width;
+    newCanvas.height = imgData.height;
+
+    const newCtx = newCanvas.getContext('2d');
+    newCtx.putImageData(imgData, 0, 0);
+    drawText(newCtx);
+
+    const myImageDataUrl = newCanvas.toDataURL('image/png').replace('image/png', 'image/octet-stream');
+    const img = document.createElement('img');
+    img.src = myImageDataUrl;
+    img.alt = key;
+    newCanvas.remove();
+    return img;
+}
+
+async function imageDataToBlob(imageData){
+    const w = imageData.width;
+    const h = imageData.height;
+    let canvas = document.createElement("canvas");
+    canvas.width = w;
+    canvas.height = h;
+    const ctx = canvas.getContext("2d");
+    ctx.putImageData(imageData, 0, 0);
+  
+    return new Promise((resolve) => {
+        canvas.toBlob(resolve); // implied image/png format
+    });
+  }
