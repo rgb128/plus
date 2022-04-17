@@ -8,7 +8,13 @@ const CONFIG = {
     clickPaddings: 2,
     shiftEqual: false,
     animationDuration: 300,
-    colors: ['red', 'green', 'blue', 'magenta', 'gray', 'aqua', 'sienna'],
+    colors: ['#C64104','#D4A918','#2481AD','#0A3D4E','#E7DAD4','#A85333','#135221','#2B7D70','#A8BBAF','#080A08'], /*Голова крестьянина*/
+    
+    //colors: ['#447414','#E2D9D0','#733021','#B5957A','#ADC1C6','#91774B','#9F8069','#6D7A7F','#44545C','#191318'], /*Le fils de l'homme*/
+    //colors: ['#C8A85B','#AC5444','#897848','#9AA16B','#60442F','#988F9F','#66724B','#615667','#22151F','#434738'], /*Mona Lisa, La Gioconda*/
+    //colors: ['#CCC252','#E3DCCC','#AC8443','#9EA840','#8B8634','#64702F','#5A5527','#A0988E','#2D2F1E','#546056'], /*Shrek Meme Face*/
+    //colors: ['#DAE4EE','#EDEBE8','#B9BECB','#4C6C74','#939288','#6D7984','#868285','#646057','#574F4E','#1B1A1F']; /*Der Wanderer über dem Nebelmeer*/
+    
     basicColors: {
         light: 'white',
         dark: 'black',
