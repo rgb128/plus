@@ -1,5 +1,6 @@
 'use strict';
 
+fillBasic();
 drawText(ctx);
 
 canvasElement.onclick = async (e) => {

@@ -69,3 +69,12 @@ function drawText(context) {
     context.strokeText(CONFIG.save.text, CONFIG.canvasWidth - CONFIG.save.right, CONFIG.canvasHeight - CONFIG.save.bottom);
     context.fillText(CONFIG.save.text, CONFIG.canvasWidth - CONFIG.save.right, CONFIG.canvasHeight - CONFIG.save.bottom);
 }
+
+function fillBasic() {
+    if (CONFIG.darkMode) {
+        ctx.fillStyle = CONFIG.basicColors.dark;
+    } else {
+        ctx.fillStyle = CONFIG.basicColors.light;
+    }
+    ctx.fillRect(0, 0, CONFIG.canvasWidth, CONFIG.canvasHeight);
+}

@@ -9,6 +9,10 @@ const CONFIG = {
     shiftEqual: false,
     animationDuration: 300,
     colors: ['red', 'green', 'blue', 'magenta', 'gray', 'aqua', 'sienna'],
+    basicColors: {
+        light: 'white',
+        dark: 'black',
+    },
     save: {
         text: '#808080 plus',
         fileName: 'plus.png',
@@ -33,6 +37,7 @@ window.onresize = (e) => {
     CONFIG.maxShift = Math.min(document.documentElement.clientWidth, document.documentElement.clientHeight) / 4;
     canvasElement.width = CONFIG.canvasWidth;
     canvasElement.height = CONFIG.canvasHeight;
+    fillBasic();
     ctx.putImageData(imageData, CONFIG.canvasWidth - oldWidth, CONFIG.canvasHeight - oldHeight);
 }
 
