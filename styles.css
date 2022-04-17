@@ -104,7 +104,7 @@ button img{
     border: 2px solid black;
 }
 #history > div .item > .content.active {
-    border-color: yellow;
+    border-color: blue;
 }
 #history > div .item > .content > img {
     width: 100%;
@@ -134,7 +134,7 @@ button img{
         border: 2px solid white;
     }
     #history > div .item > .content.active {
-        border-color: blue;
+        border-color: yellow;
     }
     button {
         background-color: black;
