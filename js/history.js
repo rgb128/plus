@@ -25,6 +25,10 @@ window.onhashchange = function() {
     imgData.root.contentDiv.classList.add('active');
     if (!imgData) return;
     ctx.putImageData(imgData.imageData, CONFIG.canvasWidth - imgData.imageData.width, CONFIG.canvasHeight - imgData.imageData.height); // this shoudn't be execute every time
+
+    const scrollX = imgData.root.offsetLeft - ((document.getElementById('history').offsetWidth - imgData.root.contentDiv.offsetWidth) / 2);
+    const scrollY = imgData.root.offsetTop - ((document.getElementById('history').offsetHeight - imgData.root.offsetHeight) / 2);
+    document.getElementById('history').scrollTo(scrollX, scrollY);
 }
 
 class HistoryItem {

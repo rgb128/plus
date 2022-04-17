@@ -67,6 +67,8 @@ button img{
     max-height: 50vh;
     padding: 5px;
     display: flex;
+    position: relative;
+    scroll-behavior: smooth;
 }
 #history > div {
     display: flex;
@@ -82,7 +84,6 @@ button img{
     margin-right: auto;
 }
 #history > div .item > .content {
-    /* padding: 5px; */
     margin: 5px;
     align-self: center;
     width: 100px;
@@ -93,13 +94,14 @@ button img{
 }
 #history > div .item > .content > img {
     width: 100%;
-    /* min-width: 100px; */
     height: 60px;
     object-fit: cover;
 }
 #history > div .item > .content > button {
     width: 50%;
     font-size: .7rem;
+    height: 30px;
+    line-height: 30px;
 }
 #history > div .item > .children {
     display: flex;
