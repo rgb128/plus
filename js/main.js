@@ -2,6 +2,7 @@
 
 fillBasic();
 drawText(ctx);
+imagesHistory.add();
 
 canvasElement.onclick = async (e) => {
     const x = e.offsetX;
@@ -19,6 +20,7 @@ canvasElement.onclick = async (e) => {
     const color = CONFIG.colors[Math.floor(Math.random() * CONFIG.colors.length)];
 
     await makePlus(ctx, color, realX, realY);
+    imagesHistory.add();
 }
 
 function makePlus(ctx, color, x = CONFIG.canvasWidth / 2, y = CONFIG.canvasHeight / 2, width = CONFIG.canvasWidth, height = CONFIG.canvasHeight) {
