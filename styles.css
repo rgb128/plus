@@ -45,21 +45,41 @@ button:focus {
     color: black;
     overflow: auto;
     height: 200px;
+    padding: 5px;
+    display: flex;
 }
 #history > div {
     display: flex;
     flex-direction: row;
-
+    height: fit-content;
+    min-height: 100%;
+    margin: 0px auto;
 }
 #history > div .item {
     display: flex;
     flex-direction: row;
+    align-self: center;
+    margin-right: auto;
 }
 #history > div .item > .content {
-    padding: 5px;
-    /* align-items: center;
-    justify-content: center; */
+    /* padding: 5px; */
+    margin: 5px;
     align-self: center;
+    width: 100px;
+    border: none;
+}
+#history > div .item > .content.active {
+    border: 2px solid black;
+}
+#history > div .item > .content > img {
+    width: 100%;
+    /* min-width: 100px; */
+    height: 60px;
+    object-fit: cover;
+}
+#history > div .item > .content > button {
+    width: 50%;
+    font-size: .4rem;
 }
 #history > div .item > .children {
     display: flex;
@@ -70,6 +90,9 @@ button:focus {
     div#text {
         background-color: black;
         color: white;
+    }
+    #history > div .item > .content.active {
+        border: 2px solid white;
     }
     button {
         background-color: black;
