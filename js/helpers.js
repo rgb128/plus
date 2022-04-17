@@ -130,9 +130,9 @@ async function imageDataToBlob(imageData){
     canvas.width = w;
     canvas.height = h;
     const ctx = canvas.getContext("2d");
-    ctx.putImageData(imageData, 0, 0);        // synchronous
+    ctx.putImageData(imageData, 0, 0);
   
     return new Promise((resolve) => {
-          canvas.toBlob(resolve); // implied image/png format
+        canvas.toBlob(resolve); // implied image/png format
     });
   }
