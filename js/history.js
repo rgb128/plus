@@ -13,6 +13,10 @@ const imagesHistory = {
         this.imageDatas[newHash] = new HistoryItem(newHash, imgData, parent);
         this.imageDatas[newHash].root.contentDiv.classList.add('active');
         window.location.hash = newHash;
+
+        for (const key in imagesHistory.imageDatas) {
+            imagesHistory.imageDatas[key].redrawLinkToParent();
+        }
     }
 };
 
@@ -36,6 +40,7 @@ class HistoryItem {
     /** @type {ImageData} */ imageData;
     /** @type {HistoryItem?} */ parent;
     /** @type {HTMLElement} */ root;
+    /** @type {HTMLElement} */ linkToParent;
     /** @type {boolean} */ opened = true;
 
     constructor (key, imageData, parent) {
@@ -97,5 +102,32 @@ class HistoryItem {
         } else {
             document.querySelector('#history > div').appendChild(this.root);
         }
+
+        this.drawLinkToParent();
+    }
+    drawLinkToParent(padding = 5) {
+        if (!this.parent) return;
+        const div = document.createElement('div');
+        div.classList.add('link');
+        this.linkToParent = div;
+        this.redrawLinkToParent(padding);
+        document.querySelector('#history > div').appendChild(div);
+    }
+
+    redrawLinkToParent(padding = 5) {
+        if (!this.parent) return;
+        const thisCnt = this.root.contentDiv;
+        const parentCnt = imagesHistory.imageDatas[this.parent].root.contentDiv;
+        const pX = parentCnt.offsetLeft + parentCnt.offsetWidth + padding;
+        const pY = parentCnt.offsetTop + parentCnt.offsetHeight / 2;
+        const tX = thisCnt.offsetLeft - padding;
+        const tY = thisCnt.offsetTop + thisCnt.offsetHeight / 2;
+
+        const hypotenuse = Math.sqrt(Math.pow(pX - tX, 2) + Math.pow(pY - tY, 2));
+        this.linkToParent.style.width = hypotenuse + 'px';
+        this.linkToParent.style.top = pY + 'px';
+        this.linkToParent.style.left = pX + 'px';
+        const angle = Math.atan((tY - pY) / (tX - pX));
+        this.linkToParent.style.transform = `rotate(${angle}rad)`;
     }
 }

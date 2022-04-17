@@ -64,7 +64,7 @@ button img{
     color: black;
     overflow: auto;
     min-height: 200px;
-    max-height: 50vh;
+    max-height: 100vh;
     padding: 5px;
     display: flex;
     position: relative;
@@ -77,20 +77,34 @@ button img{
     min-height: 100%;
     margin: auto;
 }
+#history > div div.link {
+    position: absolute;
+    height: 2px;
+    border-radius: 1px;
+    transform-origin: left center;
+    background-color: black;
+    z-index: 1;
+}
 #history > div .item {
     display: flex;
     flex-direction: row;
     align-self: center;
     margin-right: auto;
+    padding-left: 50px;
+    z-index: 2;
+}
+#history > div > .item {
+    padding-left: 0px;
 }
 #history > div .item > .content {
     margin: 5px;
     align-self: center;
     width: 100px;
     border: none;
+    border: 2px solid black;
 }
 #history > div .item > .content.active {
-    border: 2px solid black;
+    border-color: yellow;
 }
 #history > div .item > .content > img {
     width: 100%;
@@ -113,8 +127,14 @@ button img{
         background-color: black;
         color: white;
     }
-    #history > div .item > .content.active {
+    #history > div div.link {
+        background-color: white;
+    }
+    #history > div .item > .content {
         border: 2px solid white;
+    }
+    #history > div .item > .content.active {
+        border-color: blue;
     }
     button {
         background-color: black;
