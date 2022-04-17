@@ -16,7 +16,7 @@ canvas {
     display: block;
 }
 
-div {
+div#text {
     text-align: justify;
     font-size: 1.2rem;
     padding: 5px;
@@ -38,6 +38,31 @@ button:active,
 button:hover,
 button:focus {
     background-color: rgb(181, 181, 181);
+}
+
+#history {
+    color: white;
+    overflow: auto;
+    height: 200px;
+}
+#history > div {
+    display: flex;
+    flex-direction: row;
+
+}
+#history > div .item {
+    display: flex;
+    flex-direction: row;
+}
+#history > div .item > .content {
+    padding: 5px;
+    /* align-items: center;
+    justify-content: center; */
+    align-self: center;
+}
+#history > div .item > .children {
+    display: flex;
+    flex-direction: column;
 }
 
 @media screen and (prefers-color-scheme: dark) {

@@ -8,10 +8,13 @@ const CONFIG = {
     clickPaddings: 2,
     shiftEqual: false,
     animationDuration: 300,
-    colors: getColorPalette(),
+    colors: ['red', 'yellow', 'black', 'white'],
+    // colors: getColorPalette(),
     basicColors: {
-        light: 'white',
-        dark: 'black',
+        // light: 'white',
+        // dark: 'black',
+        light: 'gray',
+        dark: 'gray',
     },
     save: {
         text: '#808080 plus',
