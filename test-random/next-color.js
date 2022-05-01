@@ -4,14 +4,11 @@ function nextColor(colorPalette) {
 
     if (!colors.length) {
         colorPalette.currentBool = !colorPalette.currentBool;
-        colors = colorPalette.colors;
+        colors = colorPalette.colors.filter(c => c.value !== colorPalette.previousColor);
         // console.log('flip');
     }
 
-    let colorIndex = randomInt(colors.length - 1);
-    if (colors[colorIndex].value === colorPalette.previousColor) {
-        colorIndex = colors.length - 1;
-    }
+    const colorIndex = randomInt(colors.length);
     colorPalette.previousColor = colors[colorIndex].value;
     colors[colorIndex].currentBool = !colors[colorIndex].currentBool;
     return colors[colorIndex].value;
