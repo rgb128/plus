@@ -123,7 +123,7 @@ function getImage(imgData, key) {
     return img;
 }
 
-async function imageDataToBlob(imageData){
+async function imageDataToBlob(imageData) {
     const w = imageData.width;
     const h = imageData.height;
     let canvas = document.createElement("canvas");
@@ -136,4 +136,4 @@ async function imageDataToBlob(imageData){
     return new Promise((resolve) => {
         canvas.toBlob(resolve); // implied image/png format
     });
-  }
+}

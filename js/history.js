@@ -105,7 +105,7 @@ class HistoryItem {
 
         this.drawLinkToParent();
     }
-    drawLinkToParent(padding = 5) {
+    drawLinkToParent(padding = 0) {
         if (!this.parent) return;
         const div = document.createElement('div');
         div.classList.add('link');
@@ -114,7 +114,7 @@ class HistoryItem {
         document.querySelector('#history > div').appendChild(div);
     }
 
-    redrawLinkToParent(padding = 5) {
+    redrawLinkToParent(padding = 0) {
         if (!this.parent) return;
         const thisCnt = this.root.contentDiv;
         const parentCnt = imagesHistory.imageDatas[this.parent].root.contentDiv;
