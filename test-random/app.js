@@ -2,6 +2,10 @@
 
 const colorPalettes = [
     {
+        name: 'Simple RGB',
+        colors: ['#ff0000','#00ff00','#0000ff'],
+    },
+    {
         name: 'Голова крестьянина',
         colors: ['#C64104','#D4A918','#2481AD','#0A3D4E','#E7DAD4','#A85333','#135221','#2B7D70','#A8BBAF','#080A08'],
     },
@@ -40,6 +44,7 @@ function start() {
     select.innerHTML = '';
     for (let i = 0; i < colorPalettes.length; i-=-1) {
         const colorPalette = colorPalettes[i];
+        colorPalette.colors = colorPalette.colors.map(c => { return { value: c }; }); // Preparing color
         const option = document.createElement('option');
         option.value = i;
         option.innerText = colorPalette.name + ' (' + colorPalette.colors.length + ' colors)';
