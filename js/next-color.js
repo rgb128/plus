@@ -1,3 +1,5 @@
+'use strict';
+
 function nextColor(colorPalette) {
     let colors = colorPalette.filter(c => c.currentBool == colorPalette.currentBool);
     // console.log(colorPalette.currentBool ? '1' : '0', colorPalette.colors.map(c => c.currentBool ? '1' : '0').join());
