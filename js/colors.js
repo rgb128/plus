@@ -33,7 +33,8 @@ const colorPalettes = [
         name: 'Бутерброд',
         colors: ['#3C6C04','#BAC8DC','#A5B3D3','#552F18','#D9D7D5','#615C2C','#B7B0A9','#A0A6AA','#7C7771','#2F261C'],
     },
-];
+]
+.map(cp => { return { ...cp, colors: cp.colors.map(c => { return { value: c }; }) }; });
 
 function getColorPalette() {
     function normalize(x) {
@@ -42,7 +43,6 @@ function getColorPalette() {
     }
     const currentPalette = normalize(window.localStorage['colorPalette'] || 0);
     const newPalette = normalize(currentPalette + 1);
-    console.log(currentPalette, newPalette);
     window.localStorage['colorPalette'] = newPalette;
     return colorPalettes[currentPalette].colors;
 }

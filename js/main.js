@@ -17,7 +17,7 @@ canvasElement.onclick = async (e) => {
         y > (CONFIG.canvasHeight - CONFIG.clickPaddings) ? (CONFIG.canvasHeight - CONFIG.clickPaddings) :
         y;
     
-    const color = CONFIG.colors[Math.floor(Math.random() * CONFIG.colors.length)];
+    const color = nextColor(CONFIG.colors);
 
     await makePlus(ctx, color, realX, realY);
     imagesHistory.add();
